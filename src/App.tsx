@@ -27,10 +27,20 @@ function App() {
 		return urlObj.href;
 	};
 
+	const removeHashReload = () => {
+		if (!rHashedURL) {
+			return;
+		}
+		chrome.tabs.update({ url: rHashedURL });
+	}
+
 	return (
 		<>
 			<div>
 				<div>{currentURL}</div>
+				<div>
+					<button type="button" onClick={removeHashReload}>Remove Hash Reload</button>
+				</div>
 				<div>{rHashedURL}</div>
 			</div>
 		</>
