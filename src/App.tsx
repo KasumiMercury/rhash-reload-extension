@@ -15,10 +15,11 @@ function App() {
 		setCurrentURL(tab.url);
 
 		// get hash removed url
+		// currentURL state may not be updated yet, use tab.url instead
 		setRHashedURL(getHashRemovedURL(tab.url));
 	});
 
-	const getHashRemovedURL = (url: string) => {
+	const getHashRemovedURL: (url: string) => string = (url: string) => {
 		const urlObj = new URL(url);
 		const hash = urlObj.hash;
 		if (hash) {
