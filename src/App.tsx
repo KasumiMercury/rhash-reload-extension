@@ -1,32 +1,15 @@
 import "./App.css";
 import { useState } from "react";
+import { getCurrentUrl, getHashRemovedURL } from "./utils/url.ts";
 
 function App() {
 	const [currentURL, setCurrentURL] = useState("");
 	const [rHashedURL, setRHashedURL] = useState("");
 
-	// get current tab's url
-	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-		const tab = tabs[0];
-		if (!tab.url) {
-			return;
-		}
-
-		setCurrentURL(tab.url);
-
-		// get hash removed url
-		// currentURL state may not be updated yet, use tab.url instead
-		setRHashedURL(getHashRemovedURL(tab.url));
+	getCurrentUrl().then((url) => {
+		setCurrentURL(url);
+		setRHashedURL(getHashRemovedURL(url));
 	});
-
-	const getHashRemovedURL: (url: string) => string = (url: string) => {
-		const urlObj = new URL(url);
-		const hash = urlObj.hash;
-		if (hash) {
-			urlObj.hash = "";
-		}
-		return urlObj.href;
-	};
 
 	const removeHashReload = () => {
 		if (!rHashedURL) {
