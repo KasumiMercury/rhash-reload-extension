@@ -33,14 +33,16 @@ function App() {
 			return;
 		}
 		chrome.tabs.update({ url: rHashedURL });
-	}
+	};
 
 	return (
 		<>
 			<div>
 				<div>{currentURL}</div>
 				<div>
-					<button type="button" onClick={removeHashReload}>Remove Hash Reload</button>
+					<button type="button" onClick={removeHashReload}>
+						Remove Hash Reload
+					</button>
 				</div>
 				<div>{rHashedURL}</div>
 			</div>
