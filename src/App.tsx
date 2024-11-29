@@ -2,29 +2,36 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-	const [urlState, setURL] = useState("");
+	const [currentURL, setCurrentURL] = useState("");
+	const [rHashedURL, setRHashedURL] = useState("");
 
-	// get current tab's url with chrome.tabs.query
-	const getCurrentTabURL = () => {
-		console.log("getTabURL");
-		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-			const tab = tabs[0];
-			const url = tab.url;
-			console.log(url);
-			if (!url) {
-				return;
-			}
-			setURL(url);
-		});
+	// get current tab's url
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		const tab = tabs[0];
+		if (!tab.url) {
+			return;
+		}
+
+		setCurrentURL(tab.url);
+
+		// get hash removed url
+		setRHashedURL(getHashRemovedURL(tab.url));
+	});
+
+	const getHashRemovedURL = (url: string) => {
+		const urlObj = new URL(url);
+		const hash = urlObj.hash;
+		if (hash) {
+			urlObj.hash = "";
+		}
+		return urlObj.href;
 	};
 
 	return (
 		<>
 			<div>
-				<button type="button" onClick={getCurrentTabURL}>
-					GetParsedURL
-				</button>
-				<div>{urlState}</div>
+				<div>{currentURL}</div>
+				<div>{rHashedURL}</div>
 			</div>
 		</>
 	);
