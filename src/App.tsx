@@ -3,6 +3,7 @@ import { useState } from "react";
 import { getActiveTabInfo, getHashRemovedURL } from "./utils/url.ts";
 import CopyButton from "./components/CopyButton.tsx";
 import LongStringDisplay from "./components/LongStringDisplay.tsx";
+import FeatherIcon from "feather-icons-react";
 
 function App() {
 	const [currentTitle, setCurrentTitle] = useState("");
@@ -28,22 +29,32 @@ function App() {
 
 	return (
 		<>
-			<div className="max-w-96">
-				<div className="text-lg">{currentTitle}</div>
-				<div className="text-sm">
+			<div className="h-fit flex flex-col gap-2">
+				<div className="text-base">{currentTitle}</div>
+				<div className="text-xs">
 					<LongStringDisplay text={currentURL} />
 				</div>
 				<div>
-					<button type="button" onClick={removeHashReload}>
-						Remove Hash Reload
-					</button>
+					<p className="text-sm py-2">Hash Removed</p>
+					<div className="text-xs">
+						<LongStringDisplay text={rHashedURL} />
+					</div>
+					<div className="flex flex-row w-fit mr-0 ml-auto mt-1 gap-2">
+						<CopyButton text={rHashedURL} />
+						<button type="button" onClick={removeHashReload} className="p-1">
+							<FeatherIcon icon={"rotate-cw"} size={16} />
+						</button>
+					</div>
 				</div>
-				<div className="text-sm">
-					<LongStringDisplay text={rHashedURL} />
+				<div>
+					<p className="text-xs py-2">Markdown</p>
+					<LongStringDisplay
+						text={makeMarkdownLink(currentTitle, currentURL)}
+					/>
+					<div className="w-fit mr-0 ml-auto mt-1">
+						<CopyButton text={makeMarkdownLink(currentTitle, currentURL)}/>
+					</div>
 				</div>
-				<CopyButton text={rHashedURL} />
-				<div>{makeMarkdownLink(currentTitle, currentURL)}</div>
-				<CopyButton text={makeMarkdownLink(currentTitle, currentURL)} />
 			</div>
 		</>
 	);

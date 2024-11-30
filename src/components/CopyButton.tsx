@@ -11,7 +11,7 @@ export default function CopyButton({ text }: { text: string }) {
 	};
 
 	return (
-		<button type="button" onClick={writeToClipboard}>
+		<button type="button" onClick={writeToClipboard} className="p-1">
 			{copied ? (
 				<FeatherIcon icon={"check-circle"} size={16} />
 			) : (
