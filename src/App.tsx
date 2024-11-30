@@ -20,6 +20,14 @@ function App() {
 		chrome.tabs.update({ url: rHashedURL });
 	};
 
+	const [copied, setCopied] = useState(false);
+
+	const writeToClipboard = (text: string) => {
+		navigator.clipboard.writeText(text).then(() => {
+			setCopied(true);
+		});
+	}
+
 	return (
 		<>
 			<div>
@@ -31,6 +39,10 @@ function App() {
 					</button>
 				</div>
 				<div>{rHashedURL}</div>
+				<button type="button" onClick={() => {
+					writeToClipboard(rHashedURL);
+				}}>copy</button>
+				{copied && <div>Copied!</div>}
 			</div>
 		</>
 	);
