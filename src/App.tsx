@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import { getActiveTabInfo, getHashRemovedURL } from "./utils/url.ts";
+import CopyButton from "./components/CopyButton.tsx";
 
 function App() {
 	const [currentTitle, setCurrentTitle] = useState("");
@@ -20,14 +21,6 @@ function App() {
 		chrome.tabs.update({ url: rHashedURL });
 	};
 
-	const [copied, setCopied] = useState(false);
-
-	const writeToClipboard = (text: string) => {
-		navigator.clipboard.writeText(text).then(() => {
-			setCopied(true);
-		});
-	};
-
 	const makeMarkdownLink = (title: string, url: string) => {
 		return `[${title}](${url})`;
 	};
@@ -43,24 +36,9 @@ function App() {
 					</button>
 				</div>
 				<div>{rHashedURL}</div>
-				<button
-					type="button"
-					onClick={() => {
-						writeToClipboard(rHashedURL);
-					}}
-				>
-					copy
-				</button>
+				<CopyButton text={rHashedURL} />
 				<div>{makeMarkdownLink(currentTitle, currentURL)}</div>
-				<button
-					type="button"
-					onClick={() => {
-						writeToClipboard(makeMarkdownLink(currentTitle, currentURL));
-					}}
-				>
-					copy
-				</button>
-				{copied && <div>Copied!</div>}
+				<CopyButton text={makeMarkdownLink(currentTitle, currentURL)} />
 			</div>
 		</>
 	);
