@@ -1,6 +1,6 @@
 import "./App.css";
 import { useState } from "react";
-import {getActiveTabInfo, getHashRemovedURL} from "./utils/url.ts";
+import { getActiveTabInfo, getHashRemovedURL } from "./utils/url.ts";
 
 function App() {
 	const [currentTitle, setCurrentTitle] = useState("");
@@ -26,7 +26,11 @@ function App() {
 		navigator.clipboard.writeText(text).then(() => {
 			setCopied(true);
 		});
-	}
+	};
+
+	const makeMarkdownLink = (title: string, url: string) => {
+		return `[${title}](${url})`;
+	};
 
 	return (
 		<>
@@ -39,9 +43,23 @@ function App() {
 					</button>
 				</div>
 				<div>{rHashedURL}</div>
-				<button type="button" onClick={() => {
-					writeToClipboard(rHashedURL);
-				}}>copy</button>
+				<button
+					type="button"
+					onClick={() => {
+						writeToClipboard(rHashedURL);
+					}}
+				>
+					copy
+				</button>
+				<div>{makeMarkdownLink(currentTitle, currentURL)}</div>
+				<button
+					type="button"
+					onClick={() => {
+						writeToClipboard(makeMarkdownLink(currentTitle, currentURL));
+					}}
+				>
+					copy
+				</button>
 				{copied && <div>Copied!</div>}
 			</div>
 		</>
