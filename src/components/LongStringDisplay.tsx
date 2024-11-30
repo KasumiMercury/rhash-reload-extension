@@ -1,7 +1,7 @@
 export default function LongStringDisplay({ text }: { text: string }) {
 	return (
-		<div className="w-full h-fit cursor-pointer text-left py-1 px-2 rounded-md border border-zinc-300">
-			<p className="w-full h-fit overflow-x-hidden whitespace-nowrap select-all hover:break-all hover:overflow-x-auto hover:whitespace-normal">
+		<div className="h-fit w-full cursor-pointer rounded-md border border-zinc-300 px-2 py-1 text-left">
+			<p className="h-fit w-full select-all overflow-x-hidden whitespace-nowrap hover:overflow-x-auto hover:whitespace-normal hover:break-all">
 				{text}
 			</p>
 		</div>
