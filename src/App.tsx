@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import { getActiveTabInfo, getHashRemovedURL } from "./utils/url.ts";
 import CopyButton from "./components/CopyButton.tsx";
+import LongStringDisplay from "./components/LongStringDisplay.tsx";
 
 function App() {
 	const [currentTitle, setCurrentTitle] = useState("");
@@ -27,15 +28,19 @@ function App() {
 
 	return (
 		<>
-			<div className="max-w-2xl">
+			<div className="max-w-96">
 				<div className="text-lg">{currentTitle}</div>
-				<div className="text-sm">{currentURL}</div>
+				<div className="text-sm">
+					<LongStringDisplay text={currentURL} />
+				</div>
 				<div>
 					<button type="button" onClick={removeHashReload}>
 						Remove Hash Reload
 					</button>
 				</div>
-				<div className="text-sm">{rHashedURL}</div>
+				<div className="text-sm">
+					<LongStringDisplay text={rHashedURL} />
+				</div>
 				<CopyButton text={rHashedURL} />
 				<div>{makeMarkdownLink(currentTitle, currentURL)}</div>
 				<CopyButton text={makeMarkdownLink(currentTitle, currentURL)} />
