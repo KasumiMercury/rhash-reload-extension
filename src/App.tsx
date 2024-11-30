@@ -30,6 +30,15 @@ function App() {
 	return (
 		<>
 			<div className="h-fit flex flex-col gap-2 py-10">
+				<button
+					type="button"
+					className="mr-0 ml-auto p-2"
+					onClick={() => {
+						window.close();
+					}}
+				>
+					<FeatherIcon icon={"x"} size={16} />
+				</button>
 				<div className="text-base">{currentTitle}</div>
 				<div className="text-xs">
 					<LongStringDisplay text={currentURL} />
