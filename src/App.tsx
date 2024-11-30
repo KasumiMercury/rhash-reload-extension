@@ -32,7 +32,7 @@ function App() {
 			<div className="h-fit flex flex-col gap-2 pt-5 pb-10">
 				<button
 					type="button"
-					className="mr-0 ml-auto p-2"
+					className="mr-0 ml-auto p-2 focus:outline-none"
 					onClick={() => {
 						window.close();
 					}}
@@ -50,7 +50,11 @@ function App() {
 					</div>
 					<div className="flex flex-row w-fit mr-0 ml-auto mt-1 gap-2">
 						<CopyButton text={rHashedURL} />
-						<button type="button" onClick={removeHashReload} className="p-1">
+						<button
+							type="button"
+							onClick={removeHashReload}
+							className="p-1 focus:outline-none"
+						>
 							<FeatherIcon icon={"rotate-cw"} size={16} />
 						</button>
 					</div>
