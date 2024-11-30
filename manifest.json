@@ -7,8 +7,18 @@
 	"commands": {
 		"_execute_action": {
 			"suggested_key": {
-				"default": "Ctrl+Shift+X"
+				"default": "Alt+Shift+X"
 			}
+		},
+		"remove_hash_reload": {
+			"suggested_key": {
+				"default": "Alt+Shift+R"
+			},
+			"description": "Remove the hash from the current URL and reload the page"
 		}
+	},
+	"background": {
+		"service_worker": "src/background/index.ts",
+		"type": "module"
 	}
 }
