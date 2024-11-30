@@ -1,14 +1,16 @@
 import "./App.css";
 import { useState } from "react";
-import { getCurrentUrl, getHashRemovedURL } from "./utils/url.ts";
+import {getActiveTabInfo, getHashRemovedURL} from "./utils/url.ts";
 
 function App() {
+	const [currentTitle, setCurrentTitle] = useState("");
 	const [currentURL, setCurrentURL] = useState("");
 	const [rHashedURL, setRHashedURL] = useState("");
 
-	getCurrentUrl().then((url) => {
-		setCurrentURL(url);
-		setRHashedURL(getHashRemovedURL(url));
+	getActiveTabInfo().then((info) => {
+		setCurrentTitle(info.title);
+		setCurrentURL(info.url);
+		setRHashedURL(getHashRemovedURL(info.url));
 	});
 
 	const removeHashReload = () => {
@@ -21,6 +23,7 @@ function App() {
 	return (
 		<>
 			<div>
+				<div>{currentTitle}</div>
 				<div>{currentURL}</div>
 				<div>
 					<button type="button" onClick={removeHashReload}>
