@@ -27,15 +27,15 @@ function App() {
 
 	return (
 		<>
-			<div>
-				<div>{currentTitle}</div>
-				<div>{currentURL}</div>
+			<div className="max-w-2xl">
+				<div className="text-lg">{currentTitle}</div>
+				<div className="text-sm">{currentURL}</div>
 				<div>
 					<button type="button" onClick={removeHashReload}>
 						Remove Hash Reload
 					</button>
 				</div>
-				<div>{rHashedURL}</div>
+				<div className="text-sm">{rHashedURL}</div>
 				<CopyButton text={rHashedURL} />
 				<div>{makeMarkdownLink(currentTitle, currentURL)}</div>
 				<CopyButton text={makeMarkdownLink(currentTitle, currentURL)} />
