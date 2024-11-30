@@ -52,7 +52,7 @@ function App() {
 						text={makeMarkdownLink(currentTitle, currentURL)}
 					/>
 					<div className="w-fit mr-0 ml-auto mt-1">
-						<CopyButton text={makeMarkdownLink(currentTitle, currentURL)}/>
+						<CopyButton text={makeMarkdownLink(currentTitle, currentURL)} />
 					</div>
 				</div>
 			</div>
