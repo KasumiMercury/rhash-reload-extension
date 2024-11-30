@@ -5,6 +5,8 @@
 body {
 	margin: 0;
 	padding: 0;
+	height: fit-content;
+	min-height: fit-content;
 }
 
 #root {

@@ -29,7 +29,7 @@ function App() {
 
 	return (
 		<>
-			<div className="h-fit flex flex-col gap-2">
+			<div className="h-fit flex flex-col gap-2 py-10">
 				<div className="text-base">{currentTitle}</div>
 				<div className="text-xs">
 					<LongStringDisplay text={currentURL} />
