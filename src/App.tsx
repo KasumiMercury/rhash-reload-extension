@@ -29,7 +29,7 @@ function App() {
 
 	return (
 		<>
-			<div className="h-fit flex flex-col gap-2 py-10">
+			<div className="h-fit flex flex-col gap-2 pt-5 pb-10">
 				<button
 					type="button"
 					className="mr-0 ml-auto p-2"
