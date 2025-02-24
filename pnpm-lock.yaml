@@ -15,8 +15,8 @@ importers:
         specifier: ^4.29.2
         version: 4.29.2
       feather-icons-react:
-        specifier: ^0.7.0
-        version: 0.7.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: ^0.8.0
+        version: 0.8.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
@@ -904,8 +904,8 @@ packages:
   fastq@1.18.0:
     resolution: {integrity: sha512-QKHXPW0hD8g4UET03SdOdunzSouc9N4AuHdsX8XNcTsuz+yYFILVNIX4l9yHABMhiEI9Db0JTTIpu0wB+Y1QQw==}
 
-  feather-icons-react@0.7.1:
-    resolution: {integrity: sha512-autpDFj3/OzSfRRN0Ua3m5ysJG/PNGul5V2eznqIw1/5GrDrDW1QYs+2QgOFxzh+ImZNfC2v8+iOAdVpLpUFgA==}
+  feather-icons-react@0.8.1:
+    resolution: {integrity: sha512-3qGHyiVpUaIyNOFehqQ/bEFLDFXezWWt250g1gJfKokffuVaLt0P+es8kddf+SaxA0qqiK7tt/uxvFXjDscDKw==}
     peerDependencies:
       react: ^16.8.4 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.4 || ^17.0.0 || ^18.0.0
@@ -2226,7 +2226,7 @@ snapshots:
     dependencies:
       reusify: 1.0.4
 
-  feather-icons-react@0.7.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  feather-icons-react@0.8.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
